@@ -41,6 +41,7 @@ const enterNumber = () => {
 
 const continueGame = () => {
 	return new Promise((resolve, reject) => {
+    // Pop up confirm message
   	if (window.confirm("Do you want to continue?")) {
     	resolve(true)
     } else {
@@ -53,7 +54,7 @@ const handleGuessPromise = () => {
   enterNumber()
   .then((result) => {
     alert(`Dice ${result.randomNumber}: you got ${result.points} points`)
-
+    // If user confirms, call handleGuess and start a new game, if not, end game with an alert
     continueGame().then((result) => {
       if(result) {
         handleGuess()

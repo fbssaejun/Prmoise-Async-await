@@ -13,3 +13,15 @@ const fetchCountry = async (alpha3Code) => {
     console.log(error);
   }
 };
+
+const fetchCountryAndNeighbors = async (alpha3Code) => {
+  const columbia = await fetchCountry(alpha3Code)
+
+  const neighbors = await Promise.all(
+    columbia.borders.map(border => fetchCountry(border))
+  )
+
+  console.log(neighbors)
+}
+
+fetchCountryAndNeighbors('col'); // => Logs 5 neighbor countries of columbia to the console : Brazil, Ecuador, Peru, Venezuela, Panama each as an object with more specific data

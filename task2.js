@@ -25,4 +25,5 @@ const kayosPromise = (isSick) => {
   })
 }
 
-kayosPromise(true);
+kayosPromise(true); // => "Kayo showed up to the party with 1 cake!"
+kayosPromise(false); // => "Kayo is sick, there will be 0 cake at this party"

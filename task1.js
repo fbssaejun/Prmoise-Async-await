@@ -47,7 +47,7 @@ const continueGame = () => {
   	if (window.confirm("Do you want to continue?")) {
     	resolve(true)
     } else {
-    	resolve(false)
+    	reject()
     }
   })
 }
@@ -69,7 +69,24 @@ const handleGuessPromise = () => {
 }
 
 
+const handleGuessAsync = async () => {
+try {
+  // await is same as getting the result with '.then()'
+    const result = await enterNumber();
+    alert(`Dice ${result.randomNumber}: you got ${result.points} points`)
 
+    const isContinue = await continueGame();
+
+    if (isContinue) {
+    handleGuessAsync()
+    } else {
+    alert("GAME OVER")
+    }
+
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 const start = () => {
 	handleGuess();

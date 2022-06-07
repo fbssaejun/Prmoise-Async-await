@@ -1,12 +1,28 @@
-// Task 2: Create a guessing game.
+// Task 2: Translate the story into code.
 
-// User story: User can enter a number
-// User story: The system pick a random number from 1 to 6
-// User story: If user number is equal to a random number, give user 2 points
-// User story: If the user number is different from the random number by 1,
-// give the user 1 point, otherwise, give the user 0 points.
-// User story: User can decide to play the game as long as they want to
+/*
+Story :
 
-const start = () => {};
+My friend Kayo promises to make a cake for my birthday in two weeks.
 
-start();
+If everything goes well and Kayo doesn't get sick, we'll have a certain number of cakes. (Cakes are a countable in this tutorial 😆). Otherwise, if Kayo gets sick, we'll have no cakes.
+
+Either way, we're still going to have a party.
+
+*/
+
+const kayosPromise = (isSick) => {
+  return new Promise((resolve, reject) => {
+    if (isSick) {
+      resolve(1)
+    } else {
+      reject(0)
+    }
+  }).then(res => {
+    console.log(`Kayo showed up to the party with ${res} cake!`)
+  }).catch(err => {
+    console.log(`Kayo is sick, there will be ${err} cake at this party`)
+  })
+}
+
+kayosPromise(true);
